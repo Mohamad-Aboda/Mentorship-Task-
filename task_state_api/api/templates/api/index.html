@@ -1,0 +1,46 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Home Page</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+	<div class="app">
+		<header>
+			<h1>TASK STATUS</h1>
+		</header>
+		<div class="lists">
+			<div class="list">
+				<center>draft</center><hr>
+
+                
+                {% for task in tasks %}
+                    <div class="list-item" draggable="true">{{task.title}}</div>                
+                {% endfor %}
+
+			</div>
+			<div class="list">
+				<center>active</center><hr>
+
+			</div>
+			<div class="list">
+				<center>done</center><hr>
+
+			</div>
+			<div class="list">
+				<center>archived</center><hr>
+
+			</div>
+
+
+		</div>
+	</div>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
