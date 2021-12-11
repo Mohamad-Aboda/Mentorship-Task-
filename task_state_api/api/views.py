@@ -9,9 +9,7 @@ from .serializers import TaskSerializer
 
 
 def index(request):
-    tasks = Task.objects.all()
-    return render(request, 'api/index.html', {'tasks':tasks})
-
+    return render(request, 'api/index.html', {})
 
 
 
@@ -26,6 +24,7 @@ def task_Create_List(request):
         else:
             return Response(serializer.data, status = status.HTTP_400_BAD_REQUEST)
 
+    
     elif request.method == 'GET':
         tasks = Task.objects.all()
         serializer = TaskSerializer(tasks, many=True)
@@ -36,44 +35,46 @@ def task_Create_List(request):
 #  Update & Delete & Delete 
 @api_view(['PUT', 'GET', 'DELETE'])
 def task_Update_Detail_Delete(request, pk):
+    # Update under predefined state machine
     if request.method == 'PUT':
-        task = Task.objects.get(pk = pk)
-        serializer = TaskSerializer(instance=task, data = request.data)
-        if serializer.is_valid():
-            serializer.save() 
-            return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        ok = True
+        task_object = Task.objects.get(pk=pk)
+        giv_state = task_object.state
 
+        data = request.data
+        req_state = data['state']
+
+        # check for invalid update
+        if ((giv_state == 'active' and req_state == 'draft') or 
+            (giv_state == 'done' and req_state == 'draft')or 
+            (giv_state == 'draft' and req_state == 'done')or 
+            (giv_state == 'archived' and req_state == 'done') or 
+            (giv_state == 'archived' and req_state == 'active') or 
+            (giv_state == 'archived' and req_state == 'draft')):
+            ok = False
+        
+        if ok:
+            serializer = TaskSerializer(instance=task_object, data = request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+            else:
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        else:
+            return Response('Invalid Update You should follow the predefined state')
+
+
+    # Detail
     elif request.method == 'GET':
         tasks = Task.objects.get(pk=pk)
         serializer = TaskSerializer(tasks, many=False)
         return Response(serializer.data)
-
+    # Delete 
     elif request.method == 'DELETE':
         task = Task.objects.get(id=pk)
         task.delete() 
         return Response('Task Deleted Succefully.')
-
-
-@api_view(['POST'])
-def change_state(request):
-    task = Task.objects.filter(
-        state = request.data['state']
-    )
-
-
-    req_state = request.data['state']
-    queryset = Task.objects.all()
-    giv_state = queryset.state 
-
-    if (giv_state == 'active' and req_state == 'draft') or (giv_state == 'done' and req_state == 'draft')or (giv_state == 'draft' and req_state == 'done')or (giv_state == 'archived' and req_state == 'done') or (giv_state == 'archived' and req_state == 'active') or (giv_state == 'archived' and req_state == 'draft'):
-        return Response('Invalid State!')
-    else:
-        task.state = req_state
-        task.save()
-
-
 
 
 
