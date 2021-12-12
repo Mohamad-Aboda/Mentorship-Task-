@@ -10,7 +10,8 @@ from .serializers import TaskSerializer
 
 # home page 
 def index(request):
-    return render(request, 'api/index.html', {})
+    tasks = Task.objects.all()
+    return render(request, 'api/index.html', {'tasks':tasks})
 
 
 

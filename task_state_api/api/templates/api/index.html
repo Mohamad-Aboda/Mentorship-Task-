@@ -7,15 +7,22 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Home Page</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
-
-
+    <style type="text/css">
+    	body{
+    		text-align: center;
+    	}
     </style>
 
 </head>
 <body>
 
-	<center><h1>Welcome to task state api!</h1></center>
+	<h1>Welcome to task state api!</h1>
+
+	{% for task in tasks %}
+
+		<h3> Task title: {{task.title}} </h3>
+		<h3> Task state: {{task.state}} </h3><hr>
+	{% endfor %}
 
 
 
