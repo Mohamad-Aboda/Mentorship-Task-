@@ -12,5 +12,8 @@ def two_strings(s1, s2):
     else:return False 
     
 
-res = two_strings('cat', 'art')
+s1 = input()
+s2 = input()
+
+res = two_strings(s1, s2)
 print(res)
