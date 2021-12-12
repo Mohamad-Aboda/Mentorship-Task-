@@ -9,8 +9,7 @@ class Task(models.Model):
         ('archived', 'Archived'),
     )
     title = models.TextField()
-    # by defaule the task should be set to draft when created as i understand from the task 
-    state = models.CharField(max_length = 9, choices=CHOICES, default='draft')
+    state = models.CharField(max_length = 9, choices=CHOICES)
 
 
     def __str__(self):
