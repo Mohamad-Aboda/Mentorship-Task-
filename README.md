@@ -55,13 +55,17 @@ we get:
 ### Commands
 ```
 Get all tasks
-curl http://127.0.0.1:8000/api/tasks/  <hr>
+curl http://127.0.0.1:8000/api/tasks/ 
+
 Get a single task
-curl http://127.0.0.1:8000/api/tasks/{task_id}/   <hr>
+curl http://127.0.0.1:8000/api/tasks/{task_id}/   
+
 Create a new task
-curl -X POST -d "title=created from curl&state=active" http://127.0.0.1:8000/api/tasks/   <hr>
+curl -X POST -d "title=created from curl&state=active" http://127.0.0.1:8000/api/tasks/   
+
 Full update a task
-curl -X PUT -d "title=Learn Django&state=active" http://127.0.0.1:8000/api/tasks/19/   <hr>
+curl -X PUT -d "title=Learn Django&state=active" http://127.0.0.1:8000/api/tasks/19/   
+
 Delete a movie
 curl -X DELETE http://127.0.0.1:8000/api/tasks/{task_id}/  
 
