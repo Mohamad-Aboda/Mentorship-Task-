@@ -1,7 +1,13 @@
 # Mentorship-Task
 # Task State Api 
 
-## Project Structure 
+## Project Structure
+```
+├── absolute_difference.py  
+├── common_substring.py
+├
+└── task_state_api
+```
 
 ## Installation
 * run `` python3 -m venv env ``
@@ -66,7 +72,7 @@ curl -X POST -d "title=created from curl&state=active" http://127.0.0.1:8000/api
 Full update a task
 curl -X PUT -d "title=Learn Django&state=active" http://127.0.0.1:8000/api/tasks/19/   
 
-Delete a movie
+Delete a task
 curl -X DELETE http://127.0.0.1:8000/api/tasks/{task_id}/  
 
 ```
