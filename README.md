@@ -11,12 +11,14 @@
 
 ## Installation
 * run `` python3 -m venv env `` Then activate the env
+* clone the repo `` git clone https://github.com/Mohamad-Aboda/Mentorship-Task-.git `` Then navigate to Mentorship-Task
 * run `` pip install -r requirements.txt ``
 
 ### Pre-requisites and Local Development Server
-* run `` python3 manage.py makemigrations ``
-* run `` python3 manage.py migrate ``
-* run `` python3 manage.py runserver ``
+navigate to task_state_api
+* run `` python manage.py makemigrations ``
+* run `` python manage.py migrate ``
+* run `` python manage.py runserver ``
 - You can login as admin with these credentials ``username = admin`` and ``password = admin``
  
 ## The application is run at http://127.0.0.1:8000/ by default <hr>
