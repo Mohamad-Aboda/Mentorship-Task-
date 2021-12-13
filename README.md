@@ -10,7 +10,7 @@
 ```
 
 ## Installation
-* run `` python3 -m venv env ``
+* run `` python3 -m venv env `` Then activate the env
 * run `` pip install -r requirements.txt ``
 
 ### Pre-requisites and Local Development Server
