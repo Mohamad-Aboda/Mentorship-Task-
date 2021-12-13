@@ -81,5 +81,5 @@ curl -X DELETE http://127.0.0.1:8000/api/tasks/{task_id}/
 So the workflow of the task: draft → active → done → archived.
 The task can not move from draft to done, can not move from active or done to draft, and can not
 move from archived backward. But task can move from any state to archive.
-The task updated under the defined workflow
+The task updated under the defined workflow only.
 ```
