@@ -1,9 +1,10 @@
-version: '3.8'
+version: '3'
 services:
-  web:
-    build: .
-    command: python /code/manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/code
-    ports:
-      - 8000:8000
+    backend:
+        container_name: Task_State
+        build: .
+        volumes:
+            - .:/app
+        ports:
+            - 8000:8000
+        
