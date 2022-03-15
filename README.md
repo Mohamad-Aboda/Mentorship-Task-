@@ -10,10 +10,9 @@
 ```
 
 ## Docker Setup:
-```
-docker-compose up --build
- <hr> 
-## 1.Virtual Environment Setup :
+
+``` docker-compose up --build ```
+## Virtual Environment Setup:
 
 * run `` python3 -m venv env `` Then activate the env
 * clone the repo `` git clone https://github.com/Mohamad-Aboda/Mentorship-Task-.git `` Then navigate to Mentorship-Task
